@@ -19,6 +19,8 @@ WORKDIR /opt/webapp
 # Install dependencies
 RUN pipenv install --deploy --system
 
+RUN python3 manage.py collectstatic --no-input
+
 # Run the image as a non-root user
 RUN adduser -D myuser
 USER myuser
