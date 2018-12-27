@@ -4,5 +4,3 @@ build:
     web: Dockerfile
   config:
     DEBUG_COLLECTSTATIC: 1
-run:
-  web: waitress-serve --port=$PORT dancrowdboticscom_dan_53.wsgi:application

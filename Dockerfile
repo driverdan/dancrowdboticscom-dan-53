@@ -22,3 +22,5 @@ RUN pipenv install --deploy --system
 # Run the image as a non-root user
 RUN adduser -D myuser
 USER myuser
+
+CMD waitress-serve --port=$PORT dancrowdboticscom_dan_53.wsgi:application
