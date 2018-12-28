@@ -130,7 +130,7 @@ MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
 DEBUG = env.bool("DEBUG", default=False)
 
 # Fall back to sqlite if not set. This allows collectstatic to run when doing a Docker build.
-if env.str("DATABASE_URL"):
+if env.str("DATABASE_URL", default=None):
     DATABASES = {
         'default': env.db()
     }
