@@ -129,9 +129,11 @@ MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-DATABASES = {
-    'default': env.db()
-}
+# Fall back to sqlite if not set. This allows collectstatic to run when doing a Docker build.
+if env.str("DATABASE_URL"):
+    DATABASES = {
+        'default': env.db()
+    }
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
